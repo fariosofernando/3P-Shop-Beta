@@ -1,0 +1,6 @@
+shopping - Loja
+home -> Casa
+magnify -> Pesquisar
+heart -> Coração
+cart -> Carrinho de compras
+chevron-down -> seta para baixo

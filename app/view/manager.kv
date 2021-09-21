@@ -1,0 +1,90 @@
+
+# kivy
+# maxline == 500
+
+
+#: import utils kivy.utils
+#: set icons utils.get_color_from_hex("#ccccccff")
+#: set views_rectangles utils.get_color_from_hex("#ecececff")
+#: set secundary_color utils.get_color_from_hex("#da0e3fff")
+
+<Manager>:
+    BasePage:
+        id: base_page
+        name: "Base Page"
+        BoxLayout:
+            orientation: 'vertical'
+            ScreenManager:
+                id: root_manager
+                
+            BarraFerramentas:
+                id: nav
+                orientation: 'vertical'
+                size_hint_y: None
+                height: "50dp"
+                opacity: 1
+                BoxLayout:
+                    size_hint_y: None
+                    height: '1dp'
+                    canvas: 
+                        Color:
+                            rgba: views_rectangles
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                MDBoxLayout:
+                    spacing: '5dp'
+                    
+                    Widget: 
+
+                    MDBoxLayout:
+                        orientation: "vertical"
+                        padding: '10dp', '5dp'
+                        size_hint_y: None
+                        height: nav.height
+                        OnClick: 
+                            icon: "home"
+                            halign: 'center'
+                            font_size: '31sp'
+                            theme_text_color: "Custom"
+                            text_color: secundary_color if root_manager.current == "home" else icons
+
+                            on_release: 
+                                root_manager.transition.duration = .25
+                                root_manager.transition.direction = "right"
+                                root_manager.current = "home"
+                    
+                    Widget: 
+
+                    MDBoxLayout:
+                        orientation: "vertical"
+                        padding: '10dp', '5dp'
+                        size_hint_y: None
+                        height: nav.height
+                        OnClick: 
+                            icon: "shopping"
+                            halign: 'center'
+                            font_size: '25sp'
+                            theme_text_color: "Custom"
+                            text_color: secundary_color if root_manager.current == "shop" else icons
+
+                            on_release: app.root.ids.root_manager.get_screen("shop").cavando_tamanho()
+                            on_release: 
+                                root_manager.transition.duration = .25
+                                root_manager.transition.direction = "left"
+                                root_manager.current = "shop"
+                            
+                    Widget: 
+
+<BasePage>
+<BarraFerramentas@BoxLayout>:
+    
+<OnClick@MDIcon+Button>:
+    on_release: app.root.ids.root_manager.get_screen("shop").cavando_tamanho()
+    
+    # clean atributes of button classic
+    background_normal: ""
+    background_down: ""
+    background_color: (0, 0, 0, 0)
+
+<HomePage>:

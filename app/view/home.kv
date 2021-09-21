@@ -1,0 +1,340 @@
+
+# kivy
+# maxline == 500
+
+#: import utils kivy.utils
+#: set icons utils.get_color_from_hex("#ccccccff")
+#: set views_rectangles utils.get_color_from_hex("#ecececff")
+#: set background_screens utils.get_color_from_hex("#f0f0f0ff")
+#: set line_app_bar utils.get_color_from_hex("#808080ff")
+#: set secundary_color utils.get_color_from_hex("#da0e3fff")
+#: set font "./app/view/fonts/segoe/Display.ttf"
+#: set font_bold "./app/view/fonts/segoe/Display-Semibold.ttf"
+#: import BoxEvent plugins.widgets.boxevent.BoxEvent
+
+
+<HomePage>
+    tamanho: self.height
+    on_enter: 
+        root.cavando_tamanho()
+    canvas:
+        Color:
+            rgba: background_screens
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+        
+  
+    FloatLayout:
+        id: float   
+        BoxLayout:
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            orientation: 'vertical'
+            ScrollView:
+                bar_color: [0, 0, 0, 0]
+                bar_inactive_color: [0, 0, 0, 0]
+                
+                BoxLayout: 
+                    size_hint_y: None
+                    height: self.minimum_height
+                    spacing: "5dp"
+                    orientation: 'vertical'
+                    padding: "0dp", "0dp", "0dp", "10dp"
+
+                    BoxLayout:
+                        size_hint_y: None
+                        height: "50dp"
+                        padding: "0dp", "0dp", "10dp", "0dp" 
+                        Widget:
+                        MDIcon:
+                            icon: 'cart'
+                            halign: 'center'
+                            size_hint_x: None
+                            width: "40dp"
+                            font_size: '30sp'
+                            theme_text_color: "Custom"
+                            text_color: icons 
+                    BoxLayout:  
+                        id: field_text
+                        size_hint_y: None
+                        height: "40dp"
+                        padding: "22dp", "0dp"
+                        on_touch_up:
+                            root.categoribar_animation(category, escolhas.ids) if search.focus == True else root.categoribar_animation_disabled(category, escolhas.ids)
+                        
+                        Search:
+                            id: search
+                            focus: False
+                    BoxLayout: 
+                        id: category
+                        size_hint_y: None
+                        padding: "25dp", "0dp"
+                        orientation: 'vertical'
+
+                        # Animation objects
+
+                        opacity: 0
+                        height: "0dp"
+                        
+                        
+                        BoxLayout:
+                            size_hint_y: None
+                            height: "30dp"
+                            padding: ["5dp", "0dp"]
+                            MDLabel:
+                                font_name: font
+                                text: "Categorias"
+                                color: icons
+                                size_hint_x: None
+                                width: "100dp"
+                            MDIcon: 
+                                icon: "sort-variant"
+                                halign: 'center'
+                                size_hint_x: None
+                                width: "40dp"
+                                font_size: '30sp'
+                                theme_text_color: "Custom"
+                                text_color: icons 
+                        Choise:
+                            id: escolhas
+
+                    Widget:
+                        size_hint_y: None
+                        height: "5dp"
+                    BoxLayout:
+                        size_hint_y: None
+                        height: slider_market.height
+                        padding: "20dp", "0dp"
+                        SliderMarket:
+                            id: slider_market
+                            image_slider: "./app/view/img/image10.png"
+                            text_slider: "SEXTA COLEÇÃO"
+                            radius_value: [18]
+                    
+                    Label:
+                        font_name: font_bold
+                        id: tendecias
+                        text: "RECOMENDAÇÕES"
+                        bold: True
+                        size_hint_y: None
+                        height: "60dp"
+                        color: [0, 0, 0, 1]
+                        
+                    BoxLayout: 
+                        padding: "20dp", "0dp"
+                        size_hint_y: None
+                        height: self.minimum_height
+                        
+                        ListPlugin:
+                            image: "./app/view/img/roupa2.png"
+                            title: "BLACK POPPU M250 GXT"
+                            paragrafo: "1340,0.00 MT"
+                        Widget: 
+                        ListPlugin:
+                            title: "BLACK POPPU MA80 GXT"
+                            paragrafo: "940,0.00 MT"
+                            image: "./app/view/img/roupa1.png"
+        Cexto:
+            id: cexto
+            opacity: 0
+            height: "0dp" #layout_base.height
+        
+            
+<SliderMarket@BoxLayout>:
+    image_slider: ""
+    radius_value: [0]
+    text_slider: ""
+
+    size_hint_y: None
+    height: "200dp"
+    canvas:
+        Color:  
+            rgba: 1, 1, 0, 1
+        RoundedRectangle: 
+            pos: self.pos
+            size: self.size
+            radius: self.radius_value
+    FloatLayout:
+        size_hint: [None, None]
+        size: root.size
+        canvas:
+            Color:
+                rgba: 1, 1, 1, 1
+            RoundedRectangle: 
+                source: root.image_slider
+                pos: self.pos
+                size: self.size
+                radius: root.radius_value
+        
+        Widget:
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            canvas:
+                Color:
+                    rgba: 0, 0, 0, .25
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: root.radius_value
+        BoxLayout:
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            size: root.size
+            orientation: 'vertical'
+            Label:
+                font_name: font_bold
+                size_hint_y: None
+                height: "60dp"
+                color: [1, 1, 1, 1]
+                text: root.text_slider
+                bold: True
+
+<ContentRadius@BoxLayout>:
+
+    orientation: 'vertical'
+    size_hint: [None, None]
+    size: ["120dp", "200dp"]
+
+    image_content_radius: ""
+    canvas:
+        Color:
+            rgba: views_rectangles
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [18]
+
+    BoxLayout:
+        size: root.size
+        canvas:
+            Color:
+                rgba: views_rectangles
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                source: root.image_content_radius
+                radius: [18]
+
+<ListPlugin@BoxEvent>:
+    image: ""
+    title: ""
+    paragrafo: ""
+
+    on_release: app.root.cexto_up(app.root.ids.root_manager.get_screen("home").ids.cexto, [self.image, self.paragrafo, self.title])
+    orientation: 'vertical'
+    size_hint: [None, None]
+    size: ["120dp", "250dp"]
+
+    canvas:
+
+    ContentRadius:
+        image_content_radius: root.image
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_y: None
+        height: "60dp"
+
+        Label:
+            font_name: font_bold
+            text: root.title
+            bold: True
+            color: [0, 0, 0, 1]
+            size_hint_y: None
+            height: "45dp"
+
+            text_size: self.size
+            valign: "middle"
+            halign: "left"
+            padding_x: "5dp"
+
+        Label:
+            font_name: font
+            text: root.paragrafo
+            color: [0, 0, 0, .5]
+            height: "35dp"
+            text_size: self.size
+            valign: "middle"
+            halign: "left"
+            padding_x: "5dp"
+
+<Search>:
+    font_name: font
+    hint_text: "Buscar..."
+
+    # designate design
+    cursor_color: .2, .2, .2, 1
+    hint_text_color: [.8, .8, .8, .5]
+    background_normal: "./app/view/img/textfield.png"
+    background_active: "./app/view/img/textfield_down.png"
+    padding_x: "15dp"
+    padding_y: "8dp"
+    font_size: "18sp"
+    
+
+<Choise@BoxLayout>:
+    padding: ["0dp", "0dp", "20dp", "0dp"]
+    BoxLayout: 
+        spacing: "10dp"
+        orientation: 'vertical'
+        MDLabel:
+            font_name: font
+            id: calcas
+            size_hint: [None, None]
+            size: ["100dp", "0dp"]
+            text: "Calças"
+            color: line_app_bar
+            padding_x: "10dp"
+            
+            # designate design
+            canvas:
+                Color: 
+                    rgba: [.8, .8, .8, .5]
+                Line: 
+                    rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 18)
+                    width: 1
+        MDLabel:
+            font_name: font
+            id: mascaras
+            size_hint: [None, None]
+            size: calcas.size
+            text: "Mascaras..."
+            color: line_app_bar
+            padding_x: "10dp"
+            
+            # designate design
+            canvas:
+                Color: 
+                    rgba: [.8, .8, .8, .5]
+                Line: 
+                    rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 18)
+                    width: 1
+    Widget:
+    BoxLayout: 
+        spacing: "10dp"
+        orientation: 'vertical'
+        MDLabel:
+            font_name: font
+            id: camisas
+            size_hint: [None, None]
+            size: calcas.size
+            text: "Camisas..."
+            color: line_app_bar
+            padding_x: "10dp"
+            
+            # designate design
+            canvas:
+                Color: 
+                    rgba: [.8, .8, .8, .5]
+                Line: 
+                    rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 18)
+                    width: 1
+        MDLabel:
+            font_name: font
+            id: otros
+            size_hint: [None, None]
+            size: calcas.size
+            text: "Outros..."
+            color: secundary_color
+            padding_x: "10dp"
+            
+            # designate design
+            # está por padrão não terá...

@@ -1,0 +1,273 @@
+
+#: import utils kivy.utils
+#: set down utils.get_color_from_hex("#373737ff")
+#: set icons utils.get_color_from_hex("#ccccccff")
+#: set views_rectangles utils.get_color_from_hex("#ecececff")
+#: set secundary_color utils.get_color_from_hex("#da0e3fff")
+#: set background_screens utils.get_color_from_hex("#f0f0f0ff")
+#: set white (1, 1, 1, 1)
+#: set black (0, 0, 0, 1)
+#: import Cexto plugins.widgets.cexto.Cexto
+#: import BoxEvent plugins.widgets.boxevent.BoxEvent
+#: set font "./app/view/fonts/segoe/Display.ttf"
+#: set font_bold "./app/view/fonts/segoe/Display-Semibold.ttf"
+
+
+<ShopPage>
+    on_enter: app.root.ids.root_manager.get_screen("shop").cavando_tamanho()
+    canvas:
+        Color:
+            rgba: background_screens
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    FloatLayout:
+        id: layout_base
+        ScrollView:
+            id: scroll
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            bar_color: [0, 0, 0, 0]
+            bar_inactive_color: [0, 0, 0, 0]
+            #do_scroll_y: True if initial_bar.height <100.0 else False
+            #on_scroll_start:
+            BoxLayout: 
+                padding: "20dp", "15dp", "20dp", "63dp"
+                size_hint_y: None
+                height: self.minimum_height
+                orientation: 'vertical'
+                spacing: "35dp"
+                Label:
+                    text: "ARTIGOS"
+                    font_name: font_bold
+                    color: black
+                    size_hint_y: None
+                    height: "20dp"
+                BoxLayout: 
+                    size_hint_y: None
+                    height: self.minimum_height 
+                    
+                    ListPlugin2:
+                        image: "./app/view/img/roupa2.png"
+                        title: "BLACK POPPU M250 GXT"
+                        paragrafo: "1340,0.00 MT"
+                    Widget: 
+                    ListPlugin2:
+                        title: "BLACK POPPU MA80 GXT"
+                        paragrafo: "940,0.00 MT"
+                        image: "./app/view/img/roupa1.png"
+                
+                BoxLayout: 
+                    size_hint_y: None
+                    height: self.minimum_height
+                    
+                    ListPlugin2:
+                        image: "./app/view/img/roupa2.png"
+                        title: "BLACK POPPU M250 GXT"
+                        paragrafo: "1340,0.00 MT"
+                    Widget: 
+                    ListPlugin2:
+                        title: "BLACK POPPU MA80 GXT"
+                        paragrafo: "940,0.00 MT"
+                        image: "./app/view/img/roupa1.png"
+
+        BarraInicial:
+            id: initial_bar
+            
+        
+        Cexto:
+            id: cexto
+            opacity: 0
+            height: "0dp" #layout_base.height
+
+
+<IconToggle@MDIcon+ToggleButton>:    
+    # clean atributes of button classic
+    background_normal: ""
+    background_down: ""
+    background_color: (0, 0, 0, 0)
+
+<BarraInicial>:
+
+    pos_hint: {'center_x': .5, 'bottom': 1}
+    orientation: 'vertical'
+    size_hint_y: None
+    height: "50.0dp"
+
+    on_release: app.root.search_shop(self)
+    
+    canvas:
+        Color: 
+            rgba: white
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    FloatLayout:
+        MDIcon: 
+            icon: "chevron-up"
+            size_hint_x: None
+            width: "40dp"
+            font_size: '30sp'
+            theme_text_color: "Custom"
+            text_color: icons 
+            pos_hint: {'center_x': .5, 'center_y': .5} 
+            
+    
+
+        
+
+<ContentRadius2@BoxLayout>:
+
+    orientation: 'vertical'
+    size_hint: [None,None]
+    size: ["120dp","200dp"]
+    
+    image_content_radius: ""
+    canvas:
+        Color:
+            rgba: views_rectangles
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [18]
+    
+    BoxLayout: 
+        size: root.size
+        canvas:
+            Color:
+                rgba: views_rectangles
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                source: root.image_content_radius
+                radius: [18]
+<ListPlugin2@BoxEvent>:
+    image: ""
+    title: ""
+    paragrafo: ""
+    
+    on_release: app.root.cexto_up(app.root.ids.root_manager.get_screen("shop").ids.cexto, [self.image, self.paragrafo, self.title])
+    orientation: 'vertical'
+    size_hint: [None, None]
+    size: ["120dp", "250dp"]
+    
+    
+    canvas:
+        
+    ContentRadius2:
+        image_content_radius: root.image
+    BoxLayout: 
+        orientation: 'vertical'
+        size_hint_y: None
+        height: "60dp"
+
+        Label: 
+            font_name: font_bold
+            text: root.title
+            bold: True
+            color: [0, 0, 0, 1]
+            size_hint_y: None
+            height: "45dp"
+
+            text_size: self.size
+            valign: "middle"
+            halign: "left"
+            padding_x: "5dp"
+
+        Label: 
+            font_name: font
+            text: root.paragrafo
+            color: [0, 0, 0, .5]
+            height: "35dp"
+            text_size: self.size
+            valign: "middle"
+            halign: "left"
+            padding_x: "5dp"
+<Tela>:
+    FloatLayout: 
+        
+        BoxLayout:
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            orientation: 'vertical'
+
+            BoxLayout:
+                size_hint_y: None
+                height: "50dp"
+                padding: "0dp", "0dp", "10dp", "0dp" 
+                Label: 
+                    text: "BUSCAR"
+                    font_name: font_bold
+                    color: black
+            BoxLayout:  
+                id: field_text
+                size_hint_y: None
+                height: "40dp"
+                padding: "22dp", "0dp"
+                on_touch_up:
+                    root.categoribar_animation(category, escolhas.ids) if search.focus == True else root.categoribar_animation_disabled(category, escolhas.ids)
+                
+                Search:
+                    id: search
+                    focus: False
+            BoxLayout: 
+                id: category
+                size_hint_y: None
+                padding: "25dp", "0dp"
+                orientation: 'vertical'
+
+                # Animation objects
+
+                opacity: 0
+                height: "0dp"
+                
+                
+                BoxLayout:
+                    size_hint_y: None
+                    height: "30dp"
+                    padding: ["5dp", "0dp"]
+                    MDLabel:
+                        font_name: font
+                        text: "Categorias"
+                        color: icons
+                        size_hint_x: None
+                        width: "100dp"
+                    MDIcon: 
+                        icon: "sort-variant"
+                        halign: 'center'
+                        size_hint_x: None
+                        width: "40dp"
+                        font_size: '30sp'
+                        theme_text_color: "Custom"
+                        text_color: icons 
+                Choise:
+                    id: escolhas
+
+            BoxLayout: 
+        MDIconButton:
+            pos_hint: {"center_x": .5, "bottom": 1}
+            icon: 'chevron-down'
+            halign: 'center'
+            size_hint: [None, None]
+            size: ["50dp", "50dp"]
+            theme_text_color: "Custom"
+            text_color: black
+            on_release: root.back()
+             
+<Search>:
+    font_name: font
+    hint_text: "Buscar..."
+
+    # designate design
+    cursor_color: .2, .2, .2, 1
+    hint_text_color: [.8, .8, .8, .5]
+    background_normal: "./app/view/img/textfield.png"
+    background_active: "./app/view/img/textfield_down.png"
+    padding_x: "15dp"
+    padding_y: "8dp"
+    font_size: "18sp"
+    
+
+<Choise@BoxLayout>:
+
+
