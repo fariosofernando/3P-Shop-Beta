@@ -1,1 +1,5 @@
 *icons.py
+*buildozer.spec
+.buildozer/
+bin/
+*buildozer.spec

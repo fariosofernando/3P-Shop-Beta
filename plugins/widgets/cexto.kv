@@ -1,8 +1,8 @@
 
 # kivy
 
-#: set font "./app/view/fonts/segoe/Display.ttf"
-#: set font_bold "./app/view/fonts/segoe/Display-Semibold.ttf"
+#: set font "Display.ttf"
+#: set font_bold "Display-Semibold.ttf"
 
 
 <Cexto>:
@@ -67,7 +67,7 @@
                         BoxLayout:
                             orientation: 'vertical'
                             MDLabel:
-                                font_name: font_bold
+                                #font_name: font_bold
                                 size_hint_y: None
                                 height: "30dp"
                                 color: black
@@ -76,7 +76,7 @@
                                 padding_x: "22dp"
                                 
                             MDLabel:
-                                font_name: font_bold
+                               # font_name: font_bold
                                 padding_x: "22dp"
                                 size_hint_y: None
                                 height: "30dp"
@@ -103,7 +103,7 @@
                         height: "140dp"
                         padding: ["22dp", "0dp", "5dp", "0dp"]
                         MDLabel:
-                            font_name: font
+                          #  font_name: font
                             text: root.discription
                             color: black
                     
@@ -112,7 +112,7 @@
                         height: "40dp"
                         padding: "22dp", "0dp"
                         TextInput:
-                            font_name: font
+                           # font_name: font
                             hint_text: "Esolha o seu tamanho"
 
                             # designate design
@@ -129,7 +129,7 @@
                         height: "42dp"
                         padding: ["22dp", "0dp"]
                         Button:
-                            font_name: font
+                           # font_name: font
                             text: "Adic. carrinho"
                             color: icons if self.state == "normal" else down
                             size_hint_x: None

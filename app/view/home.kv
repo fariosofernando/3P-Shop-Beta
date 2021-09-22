@@ -8,8 +8,8 @@
 #: set background_screens utils.get_color_from_hex("#f0f0f0ff")
 #: set line_app_bar utils.get_color_from_hex("#808080ff")
 #: set secundary_color utils.get_color_from_hex("#da0e3fff")
-#: set font "./app/view/fonts/segoe/Display.ttf"
-#: set font_bold "./app/view/fonts/segoe/Display-Semibold.ttf"
+#: set font "Display.ttf"
+#: set font_bold "Display-Semibold.ttf"
 #: import BoxEvent plugins.widgets.boxevent.BoxEvent
 
 
@@ -83,7 +83,7 @@
                             height: "30dp"
                             padding: ["5dp", "0dp"]
                             MDLabel:
-                                font_name: font
+                               # font_name: font
                                 text: "Categorias"
                                 color: icons
                                 size_hint_x: None
@@ -113,7 +113,7 @@
                             radius_value: [18]
                     
                     Label:
-                        font_name: font_bold
+                       # font_name: font_bold
                         id: tendecias
                         text: "RECOMENDAÇÕES"
                         bold: True
@@ -181,7 +181,7 @@
             size: root.size
             orientation: 'vertical'
             Label:
-                font_name: font_bold
+               # font_name: font_bold
                 size_hint_y: None
                 height: "60dp"
                 color: [1, 1, 1, 1]
@@ -234,7 +234,7 @@
         height: "60dp"
 
         Label:
-            font_name: font_bold
+            #font_name: font_bold
             text: root.title
             bold: True
             color: [0, 0, 0, 1]
@@ -247,7 +247,7 @@
             padding_x: "5dp"
 
         Label:
-            font_name: font
+           # font_name: font
             text: root.paragrafo
             color: [0, 0, 0, .5]
             height: "35dp"
@@ -257,7 +257,7 @@
             padding_x: "5dp"
 
 <Search>:
-    font_name: font
+    #font_name: font
     hint_text: "Buscar..."
 
     # designate design
@@ -276,7 +276,7 @@
         spacing: "10dp"
         orientation: 'vertical'
         MDLabel:
-            font_name: font
+            #font_name: font
             id: calcas
             size_hint: [None, None]
             size: ["100dp", "0dp"]
@@ -292,7 +292,7 @@
                     rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 18)
                     width: 1
         MDLabel:
-            font_name: font
+            #font_name: font
             id: mascaras
             size_hint: [None, None]
             size: calcas.size
@@ -312,7 +312,7 @@
         spacing: "10dp"
         orientation: 'vertical'
         MDLabel:
-            font_name: font
+           # font_name: font
             id: camisas
             size_hint: [None, None]
             size: calcas.size
@@ -328,7 +328,7 @@
                     rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 18)
                     width: 1
         MDLabel:
-            font_name: font
+            #font_name: font
             id: otros
             size_hint: [None, None]
             size: calcas.size
