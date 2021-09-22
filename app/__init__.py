@@ -121,8 +121,9 @@ class HomePage(Screen):
 
 
 class AppDefaults:
-    def __init__(self) -> None:
-        self.app_size = Window.size = (310,600) # if you want to run on pc to encode, use that size.
+    def __init__(self, value = None, size= None) -> None:
+        #self.app_size = Window.size = None# 310,600 if you want to run on pc to encode, use that size.
+        self.app_bordeless = Window.borderless = value
 
 
 class Search(TextInput):
