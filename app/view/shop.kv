@@ -9,8 +9,6 @@
 #: set black (0, 0, 0, 1)
 #: import Cexto plugins.widgets.cexto.Cexto
 #: import BoxEvent plugins.widgets.boxevent.BoxEvent
-#: set font "Display.ttf"
-#: set font_bold "Display-Semibold.ttf"
 
 
 <ShopPage>
@@ -39,7 +37,6 @@
                 spacing: "35dp"
                 Label:
                     text: "ARTIGOS"
-                    #font_name: font_bold
                     color: black
                     size_hint_y: None
                     height: "20dp"
@@ -162,8 +159,8 @@
         size_hint_y: None
         height: "60dp"
 
-        Label: 
-            #font_name: font_bold
+        Label:
+            font_name: "1.ttf"
             text: root.title
             bold: True
             color: [0, 0, 0, 1]
@@ -175,8 +172,8 @@
             halign: "left"
             padding_x: "5dp"
 
-        Label: 
-           # font_name: font
+        Label:
+            font_name: "2.ttf"
             text: root.paragrafo
             color: [0, 0, 0, .5]
             height: "35dp"
@@ -197,7 +194,6 @@
                 padding: "0dp", "0dp", "10dp", "0dp" 
                 Label: 
                     text: "BUSCAR"
-                    #font_name: font_bold
                     color: black
             BoxLayout:  
                 id: field_text
@@ -227,7 +223,6 @@
                     height: "30dp"
                     padding: ["5dp", "0dp"]
                     MDLabel:
-                       # font_name: font
                         text: "Categorias"
                         color: icons
                         size_hint_x: None
@@ -255,7 +250,6 @@
             on_release: root.back()
              
 <Search>:
-    #font_name: "Display.ttf"
     hint_text: "Buscar"
     cursor_color: .2, .2, .2, 1
     hint_text_color: [.8, .8, .8, .5]

@@ -16,10 +16,7 @@ Builder.load_string("""
             height: "40dp"
             padding: "22dp", "0dp"
             TextInput:
-                font_name: font
                 hint_text: "Esolha o seu tamanho"
-
-                # designate design
                 cursor_color: .2, .2, .2, 1
                 hint_text_color: [.8, .8, .8, .5]
                 background_normal: "./app/view/img/textfield.png"

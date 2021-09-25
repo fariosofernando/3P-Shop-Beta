@@ -11,12 +11,10 @@ from kivymd.app import MDApp
 from kivy.lang.builder import Builder
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.core.window import Window
-from app.view.fonts import fonts
 from kivy.uix.textinput import TextInput
 from kivy.animation import Animation
 from kivy.metrics import dp
 from kivy.clock import Clock
-from plugins.widgets.screen_search_and_results import SearchScreen
 from plugins.widgets.boxevent import BoxEvent
 
 
@@ -87,7 +85,6 @@ Builder.load_file('./app/view/home.kv')
 class HomePage(Screen):
     def __init__(self, **kw):
         super(HomePage, self).__init__(**kw)
-        self.fonts = fonts.Fonts[0]
         Clock.schedule_once(self.cavando_tamanho)
 
     def cavando_tamanho(self, time = None):
@@ -122,8 +119,8 @@ class HomePage(Screen):
 
 class AppDefaults:
     def __init__(self, value = None, size= None) -> None:
-        #self.app_size = Window.size = None# 310,600 if you want to run on pc to encode, use that size.
-        self.app_bordeless = Window.borderless = value
+        self.app_size = Window.size = (310,600)# 310,600 if you want to run on pc to encode, use that size.
+        #self.app_bordeless = Window.borderless = value
 
 
 class Search(TextInput):
@@ -140,11 +137,8 @@ Builder.load_file('./app/view/manager.kv') # Base screen and video manager style
 class BasePage(Screen):
     ...
 class Manager(ScreenManager):
-    font = "/app/view/fonts/segoe/Display.ttf"
     def __init__(self, **kw):
         super(Manager, self).__init__(**kw)
-
-        self.appfont = fonts
 
         # Screens
         base = BasePage()

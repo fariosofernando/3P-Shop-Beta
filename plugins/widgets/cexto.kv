@@ -1,10 +1,6 @@
 
 # kivy
 
-#: set font "Display.ttf"
-#: set font_bold "Display-Semibold.ttf"
-
-
 <Cexto>:
     pos_hint: {'center_x': .5, 'bottom': 1}
     size_hint_y: None
@@ -67,7 +63,7 @@
                         BoxLayout:
                             orientation: 'vertical'
                             MDLabel:
-                                #font_name: font_bold
+                                font_name: "1.ttf"
                                 size_hint_y: None
                                 height: "30dp"
                                 color: black
@@ -76,7 +72,7 @@
                                 padding_x: "22dp"
                                 
                             MDLabel:
-                               # font_name: font_bold
+                                font_name: "1.ttf"
                                 padding_x: "22dp"
                                 size_hint_y: None
                                 height: "30dp"
@@ -103,8 +99,8 @@
                         height: "140dp"
                         padding: ["22dp", "0dp", "5dp", "0dp"]
                         MDLabel:
-                          #  font_name: font
                             text: root.discription
+                            font_name: "2.ttf"
                             color: black
                     
                     BoxLayout:
@@ -112,10 +108,8 @@
                         height: "40dp"
                         padding: "22dp", "0dp"
                         TextInput:
-                           # font_name: font
+                            font_name: "2.ttf"
                             hint_text: "Esolha o seu tamanho"
-
-                            # designate design
                             cursor_color: .2, .2, .2, 1
                             hint_text_color: [.8, .8, .8, .5]
                             background_normal: "./app/view/img/textfield.png"
@@ -129,7 +123,6 @@
                         height: "42dp"
                         padding: ["22dp", "0dp"]
                         Button:
-                           # font_name: font
                             text: "Adic. carrinho"
                             color: icons if self.state == "normal" else down
                             size_hint_x: None
@@ -140,7 +133,6 @@
                             
                         Widget:
                         Button:
-                            font: font
                             text: "Comprar já"
                             color: white
                             size_hint_x: None
